@@ -52,7 +52,7 @@ class DownDC(nn.Module):
   
 class SDFT(nn.Module):
 
-    def __init__(self, color_dim, channels, kernel_size = 3):
+    def __init__(self, norm_dim, channels, kernel_size = 3):
         super().__init__()
         
         # generate global conv weights
@@ -61,16 +61,16 @@ class SDFT(nn.Module):
         self.padding = kernel_size // 2
 
         self.scale = 1 / math.sqrt(fan_in)
-        self.modulation = nn.Conv2d(color_dim, channels, 1)
+        self.modulation = nn.Conv2d(norm_dim, channels, 1)
         self.weight = nn.Parameter(
             torch.randn(1, channels, channels, kernel_size, kernel_size)
         )
 
-    def forward(self, fea, color_style):
+    def forward(self, fea, norm_feat):
         # for global adjustation
         B, C, H, W = fea.size()
-        # print(fea.shape, color_style.shape)
-        style = self.modulation(color_style).view(B, 1, C, 1, 1)
+        # print(fea.shape, norm_feat.shape)
+        style = self.modulation(norm_feat).view(B, 1, C, 1, 1)
         weight = self.scale * self.weight * style
         # demodulation
         demod = torch.rsqrt(weight.pow(2).sum([2, 3, 4]) + 1e-8)
@@ -127,32 +127,32 @@ class UpBlock(nn.Module):
         return x
     
 class NormalEncoder(nn.Module):
-    def __init__(self, color_dim=512):
+    def __init__(self, norm_dim=512):
         super(NormalEncoder, self).__init__()
 
         # self.vgg = vgg19(pretrained_path=None)
         self.vgg =  vgg19(pretrained_path = '/home/xteam/PaperCode/data_zoo/vgg19-dcbb9e9d.pth', require_grad = False)
 
         self.feature2vector = nn.Sequential(
-            nn.Conv2d(color_dim, color_dim, 4, 2, 2), # 8x8
+            nn.Conv2d(norm_dim, norm_dim, 4, 2, 2), # 8x8
             nn.LeakyReLU(0.2, True),
-            nn.Conv2d(color_dim, color_dim, 3, 1, 1),
+            nn.Conv2d(norm_dim, norm_dim, 3, 1, 1),
             nn.LeakyReLU(0.2, True),
 
-            nn.Conv2d(color_dim, color_dim, 4, 2, 2), # 4x4
+            nn.Conv2d(norm_dim, norm_dim, 4, 2, 2), # 4x4
             nn.LeakyReLU(0.2, True),
-            nn.Conv2d(color_dim, color_dim, 3, 1, 1),
+            nn.Conv2d(norm_dim, norm_dim, 3, 1, 1),
             nn.LeakyReLU(0.2, True),
 
 
             nn.AdaptiveAvgPool2d((1, 1)), # 1x1
 
-            nn.Conv2d(color_dim, color_dim//2, 1), # linear-1
+            nn.Conv2d(norm_dim, norm_dim//2, 1), # linear-1
             nn.LeakyReLU(0.2, True),
-            nn.Conv2d(color_dim//2, color_dim//2, 1), # linear-2
+            nn.Conv2d(norm_dim//2, norm_dim//2, 1), # linear-2
             nn.LeakyReLU(0.2, True),
 
-            nn.Conv2d(color_dim//2, color_dim, 1), # linear-3
+            nn.Conv2d(norm_dim//2, norm_dim, 1), # linear-3
         )
         # d = 512
 
