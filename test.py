@@ -19,7 +19,7 @@ if __name__ == "__main__":
     parser.add_argument("--batch", type=int, default=8)
     parser.add_argument("--size", type=int, default=256)
     parser.add_argument("--ckpt", type=str, default="/home/xteam/PaperCode/MM_IJCV/MM/results/MM_P2/1_rec_cm/exp/200000.pt")
-    parser.add_argument("--ckpt_s1", type=str, default="/home/xteam/PaperCode/MM_IJCV/MM/P1_result/MM22_stage_cm_1/exp/200000_DDA2PH.pkl")
+    parser.add_argument("--ckpt_s1", type=str, default="/home/xteam/PaperCode/MM_IJCV/MM/P1_result/MM22_stage_cm_1/exp/ExemplarModel.pkl")
     parser.add_argument("--lr", type=float, default=0.0001)
     parser.add_argument("--exp_name", type=str, default="1_rec_cm")
     parser.add_argument("--wandb", action="store_true")
