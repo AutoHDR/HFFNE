@@ -7,8 +7,8 @@ This repository contains the official implementation of "Towards High-fidelity F
 
 ### Testing
 #### Download checkpoints: 
-* [cpkts](https://drive.google.com/drive/folders/1djzwMItmM0oZeNk9zkdNQqb_ZXw9Tomm?usp=sharing)
-
+* [Google-cpkts](https://drive.google.com/drive/folders/1djzwMItmM0oZeNk9zkdNQqb_ZXw9Tomm?usp=sharing)  [Baidu-cpkts](https://pan.baidu.com/s/1U-TW2J9vC4LtdmG_dMfMKQ?pwd=8bsm)
+  
 For testing run:
 ```
 python test.py 
