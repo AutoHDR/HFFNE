@@ -34,7 +34,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     device = "cuda:" + str(args.gpuID)
 
-    NormalEncoder = NormalEncoder(color_dim=512).to(device)
+    NormalEncoder = NormalEncoder(norm_dim=512).to(device)
     NormalDecoder = NormalDecoder(bilinear=False).to(device)
     PreTrainModel = UNet(channel=1).to(device)
 
