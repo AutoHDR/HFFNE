@@ -111,12 +111,12 @@ class NormalEncoder(nn.Module):
 
             nn.AdaptiveAvgPool2d((1, 1)), # 1x1
 
-            nn.Conv2d(norm_dim, norm_dim//2, 1), # linear-1
+            nn.Conv2d(norm_dim, norm_dim//2, 1), 
             nn.LeakyReLU(0.2, True),
-            nn.Conv2d(norm_dim//2, norm_dim//2, 1), # linear-2
+            nn.Conv2d(norm_dim//2, norm_dim//2, 1),
             nn.LeakyReLU(0.2, True),
 
-            nn.Conv2d(norm_dim//2, norm_dim, 1), # linear-3
+            nn.Conv2d(norm_dim//2, norm_dim, 1), 
         )
         # d = 512
     def forward(self, x):
