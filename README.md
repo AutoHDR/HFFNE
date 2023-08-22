@@ -1,6 +1,6 @@
 # HFFNE
  
-This repository contains the official implementation of "Towards High-fidelity Face Normal Estimation", which appears in ACM Multimedia 2022.
+This repository contains the official implementation of "Towards High-fidelity Face Normal Estimation"[PDF](https://dl.acm.org/doi/abs/10.1145/3503161.3547959), which appears in ACM Multimedia 2022.
 
 
 
