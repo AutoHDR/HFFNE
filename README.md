@@ -8,13 +8,11 @@ Since we are working on another project, the code, together with documentation a
 
 ### Testing
 #### Download checkpoints: 
-* [cpkts]([https://drive.google.com/drive/folders/1djzwMItmM0oZeNk9zkdNQqb_ZXw9Tomm?usp=sharing](https://drive.google.com/drive/folders/1djzwMItmM0oZeNk9zkdNQqb_ZXw9Tomm?usp=sharing))
+* [cpkts]([https://drive.google.com/drive/folders/1djzwMItmM0oZeNk9zkdNQqb_ZXw9Tomm?usp=sharing](https://drive.google.com/drive/folders/1djzwMItmM0oZeNk9zkdNQqb_ZXw9Tomm?usp=sharing)
 
 For testing run:
 ```
-python test_stage/genFaceNormal.py 
+python test.py 
 ```
 
 
-
-#
