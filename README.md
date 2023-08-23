@@ -4,7 +4,7 @@ This repository contains the official implementation of "Towards High-fidelity F
 
 
 <center><img src="sample_results/vis.png" width="100%"></center>
-From top to bottom are the input face, exemplar normal, refined normal, shadings.
+From top to bottom are the input face, exemplar normal, refined normal and shadings.
 
 
 ### Testing
