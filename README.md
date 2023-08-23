@@ -3,6 +3,8 @@
 This repository contains the official implementation of "Towards High-fidelity Face Normal Estimation" [Paper](https://dl.acm.org/doi/abs/10.1145/3503161.3547959), which appears in ACM Multimedia 2022.
 
 
+<center><img src="results/vis.png" width="100%"></center>
+From top to bottom are the input face, exemplar normal, refined normal, shadings.
 
 
 ### Testing
