@@ -23,6 +23,18 @@ class DoubleConv(nn.Module):
         x = self.double_conv(x)
         return x
 
+class DownRes(nn.Module):
+    """Downscaling with stride conv then double conv"""
+    def __init__(self, in_channels, out_channels):
+        super().__init__()
+        self.main = nn.Sequential(
+            nn.Conv2d(in_channels, in_channels, 4, 2, 1),
+            nn.LeakyReLU(0.1, True),
+            ResBlock(in_channels, out_channels)
+        )    
+    def forward(self, x):
+        x = self.main(x)
+        return x
 
 class DownDC(nn.Module):
     """Downscaling with stride conv then double conv"""
@@ -131,11 +143,11 @@ class NormalDecoder(nn.Module):
         self.bilinear = bilinear
 
         self.inc = DoubleConv(n_channels, 64)
-        self.down1 = DownDC(64, 128)
-        self.down2 = DownDC(128, 256)
-        self.down3 = DownDC(256, 512)
+        self.down1 = DownRes(64, 128)
+        self.down2 = DownRes(128, 256)
+        self.down3 = DownRes(256, 512)
         factor = 2 if bilinear else 1
-        self.down4 = DownDC(512, 1024 // factor)
+        self.down4 = DownRes(512, 1024 // factor)
 
         self.up1 = UpBlock(512, 1024, 512 // factor, 3, bilinear)
         self.up2 = UpBlock(512, 512, 256 // factor, 3, bilinear)
