@@ -16,6 +16,13 @@ For testing run:
 python test.py 
 ```
 
+### License
+HFFNE is available for free, under GPL license, to use for research and educational purposes only. 
+
+
+### Contact
+Mail: autohdr@gmail.com
+
 
 ### Citation
 ```
