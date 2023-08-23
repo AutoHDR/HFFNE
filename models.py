@@ -36,18 +36,6 @@ class DownRes(nn.Module):
         x = self.main(x)
         return x
 
-class DownDC(nn.Module):
-    """Downscaling with stride conv then double conv"""
-    def __init__(self, in_channels, out_channels):
-        super().__init__()
-        self.main = nn.Sequential(
-            nn.Conv2d(in_channels, in_channels, 4, 2, 1),
-            nn.LeakyReLU(0.1, True),
-            DoubleConv(in_channels, out_channels)
-        )    
-    def forward(self, x):
-        x = self.main(x)
-        return x
 
 class SDFT(nn.Module):
     def __init__(self, norm_dim, channels, kernel_size = 3):
