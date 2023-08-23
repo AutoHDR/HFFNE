@@ -17,3 +17,13 @@ python test.py
 ```
 
 
+### Citation
+```
+@inproceedings{wang2022towards,
+  title={Towards High-Fidelity Face Normal Estimation},
+  author={Wang, Meng and Wang, Chaoyue and Guo, Xiaojie and Zhang, Jiawan},
+  booktitle={Proceedings of the 30th ACM International Conference on Multimedia},
+  pages={5172--5180},
+  year={2022}
+}
+```
