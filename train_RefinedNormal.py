@@ -1,26 +1,17 @@
 
 import argparse
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import DataLoader
 import os, glob
-import numpy as np
-from PIL import Image
 import torch
 from torch import nn, optim
 from torch.nn import functional as F
 from torch.utils import data
-from torchvision import transforms
 from tqdm import tqdm
 from torch.utils.tensorboard import SummaryWriter
-import pandas as pd
-# from NormalEncoder import NormalEncoder
 from models import *
 from vgg_model import vgg19
 from data_loader import *
-from torchvision.utils import save_image
-# import utils
-from tools import get_Normal_Std_Mean, CopyFiles, get_normal_255, get_shading_DPR_B
-# from pytorch_msssim import ssim, ms_ssim, SSIM, MS_SSIM
-from torch.autograd import Variable
+from tools import CopyFiles
 
 def mkdirss(dirpath):
     if not os.path.exists(dirpath):
